@@ -2,8 +2,10 @@ const express = require('express');
 const gravatar = require('gravatar');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
+
+const keys = require('../config/keys');
 
 const router = express.Router();
 const User = mongoose.model('user');
@@ -50,7 +52,18 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
       await user.save();
-      res.send({ message: 'User registered' });
+      console.log('userId', user, user.id);
+
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      const token = await jwt.sign(payload, keys.jwtSecret, {
+        expiresIn: '10h'
+      });
+      res.send({ token });
     } catch (err) {
       console.log(err);
       res.status(500).send('Server error');
