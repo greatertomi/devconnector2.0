@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 require('./models/User');
 require('./models/Profile');
+require('./models/Post');
 
 connectDB();
 const app = express();
