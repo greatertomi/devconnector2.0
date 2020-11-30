@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     const secret = keys.jwtSecret;
 
     const decoded = jwt.verify(token, secret);
-    req.userData = decoded;
+    req.user = decoded;
     next();
   } catch (error) {
     return res.status(401).send({ message: 'Authentication Failed!' });
