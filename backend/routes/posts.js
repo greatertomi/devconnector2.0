@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator');
 
 const auth = require('../middleware/auth');
 
-const Profile = mongoose.model('profile');
+// const Profile = mongoose.model('profile');
 const Post = mongoose.model('post');
 const User = mongoose.model('user');
 
