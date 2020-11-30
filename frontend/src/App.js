@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Alert from "./components/layout/Alert";
 import './App.css';
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <div className='container'>
+          <Alert />
           <Route path='/' exact component={Landing}/>
           <Route path='/login' exact component={Login}/>
           <Route path='/register' exact component={Register}/>
