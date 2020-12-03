@@ -11,7 +11,8 @@ const auth = require('../middleware/auth');
 
 const Profile = mongoose.model('profile');
 
-router.get('/me', async (req, res) => {
+router.get('/me', auth, async (req, res) => {
+  console.log(req.user);
   try {
     const profile = await Profile.findOne({
       user: req.user.id
@@ -41,6 +42,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    // console.log('body', req.body);
 
     const {
       company,

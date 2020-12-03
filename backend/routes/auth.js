@@ -11,7 +11,6 @@ const router = express.Router();
 const User = mongoose.model('user');
 
 // TODO add GET that loads the user
-
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -50,6 +49,7 @@ router.post(
           .status(400)
           .send({ errors: [{ msg: 'Invalid Credentials' }] });
       }
+      console.log('user', user);
 
       const payload = {
         id: user.id

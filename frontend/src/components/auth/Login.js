@@ -17,7 +17,7 @@ const Login = ({ login, isAuthenticated }) => {
   const onSubmit = e => {
     e.preventDefault();
     login(loginData)
-    console.log('loginComp', loginData)
+    // console.log('loginComp', loginData)
   }
 
   //Redirect if logged In
