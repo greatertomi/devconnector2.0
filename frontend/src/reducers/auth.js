@@ -1,4 +1,5 @@
 import {
+  ACCOUNT_DELETED,
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
@@ -39,6 +40,7 @@ const auth = (state = initialState, action) => {
     case AUTH_ERROR:
     case REGISTER_FAIL:
     case LOGOUT:
+    case ACCOUNT_DELETED:
       localStorage.removeItem('token');
       return {
         ...state,
