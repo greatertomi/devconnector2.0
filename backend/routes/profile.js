@@ -10,9 +10,10 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 
 const Profile = mongoose.model('profile');
+const Post = mongoose.model('post');
+const User = mongoose.model('user');
 
 router.get('/me', auth, async (req, res) => {
-  console.log(req.user);
   try {
     const profile = await Profile.findOne({
       user: req.user.id
@@ -126,13 +127,14 @@ router.get('/user/:user_id', async (req, res) => {
 });
 
 // Delete profile, user and post
-router.delete('/', async (req, res) => {
+router.delete('/', auth, async (req, res) => {
   try {
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({
       user: req.user.id
     });
 
-    await Profile.findOneAndRemove({
+    await User.findOneAndRemove({
       _id: req.user.id
     });
 

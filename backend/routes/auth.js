@@ -49,7 +49,7 @@ router.post(
           .status(400)
           .send({ errors: [{ msg: 'Invalid Credentials' }] });
       }
-      console.log('user', user);
+      // console.log('user', user);
 
       const payload = {
         id: user.id

@@ -15,6 +15,8 @@ import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 
 if (localStorage.token) {
   setAuthToken()
@@ -23,7 +25,8 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser())
-  }, [])
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,6 +36,8 @@ const App = () => {
           <Route path='/' exact component={Landing}/>
           <Route path='/login' exact component={Login}/>
           <Route path='/register' exact component={Register}/>
+          <Route path='/profiles' exact component={Profiles}/>
+          <Route path='/profile/:id' exact component={Profile}/>
           <PrivateRoute path='/dashboard' exact component={Dashboard}/>
           <PrivateRoute path='/create-profile' exact component={CreateProfile}/>
           <PrivateRoute path='/edit-profile' exact component={EditProfile}/>
