@@ -18,6 +18,7 @@ import AddEducation from "./components/profile-forms/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 if (localStorage.token) {
   setAuthToken()
@@ -45,6 +46,7 @@ const App = () => {
           <PrivateRoute path='/add-experience' exact component={AddExperience}/>
           <PrivateRoute path='/add-education' exact component={AddEducation}/>
           <PrivateRoute path='/posts' exact component={Posts}/>
+          <PrivateRoute path='/post' exact component={Post}/>
         </div>
       </BrowserRouter>
     </div>
